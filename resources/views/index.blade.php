@@ -168,24 +168,29 @@ input:checked + .slider:before {
         <div class="form-group">
             <label >Name</label>
             <input type="text" class="form-control" name="name" id="name">
+            <span class="text-danger" id="nameerror"></span>
             </div>
 
             <div class="form-group">
            <label >Title</label>
             <input type="text" class="form-control" name="title" id="title">
+            <span class="text-danger" id="titleerror"></span>
            </div>
             <div class="form-group">
            <label >Institute</label>
             <input type="text" class="form-control" name="institute" id="institute">
+            <span class="text-danger" id="instituteerror"></span>
            </div>
             <div class="form-group">
            <label >image</label>
             <input type="file" class="form-control" name="image" id="image">
+            <span class="text-danger" id="imageerror"></span>
            </div>
 
            <div class="form-group">
            <label >description</label>
             <input type="text" class="form-control" name="description" id="description">
+            <span class="text-danger" id="descriptionerror"></span>
            </div>
 
            <div class="form-group">
@@ -333,6 +338,16 @@ function addData() {
         title: "Add Data success",
       });
     },
+
+error: function (error) {
+$('#nameerror').text(error.responseJSON.errors.name)
+$('#titleerror').text(error.responseJSON.errors.title)
+$('#instituteerror').text(error.responseJSON.errors.institute)
+$('#imageerror').text(error.responseJSON.errors.image)
+$('#descriptionerror').text(error.responseJSON.errors.description)
+
+
+}
 
   });
 }
